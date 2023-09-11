@@ -7,7 +7,7 @@ if [ $? = 0 ]; then
   echo -e "\e[32msucess\e[0m"
     else
       echo -e "\e[31mfailed\e[0m"
-      exit
+      exit 1
 fi
 
 echo installing node js pack
@@ -16,7 +16,7 @@ if [ $? = 0 ]; then
  echo -e "\e[32msucess\e[0m"
    else
      echo -e "\e[31mfailed\e[0m"
-     exit
+     exit 1
 fi
 
 echo copying back end servicess
@@ -25,7 +25,7 @@ if [ $? = 0 ]; then
   echo -e "\e[32msucess\e[0m"
     else
       echo -e "\e[31mfailed\e[0m"
-      exit
+      exit 1
 fi
 
 echo adding user
@@ -34,7 +34,7 @@ if [ $? = 0 ]; then
   echo -e "\e[32msucess\e[0m"
     else
       echo -e "\e[31mfailed\e[0m"
-      exit
+      exit 1
 fi
 
 echo createing directory
@@ -43,7 +43,7 @@ if [ $? = 0 ]; then
  echo -e "\e[32msucess\e[0m"
    else
      echo -e "\e[31mfailed\e[0m"
-     exit
+     exit 1
 fi
 
 
@@ -61,7 +61,7 @@ if [ $? = 0 ]; then
   echo -e "\e[32msucess\e[0m"
   else
     echo -e "\e[31mfailed\e[0m"
-    exit
+    exit 1
 fi
 
 echo installing the backend servicess
@@ -70,7 +70,7 @@ if [ $? = 0 ]; then
  echo -e "\e[32msucess\e[0m"
  else
    echo -e "\e[31mfailed\e[0m"
-   exit
+   exit 1
 fi
 
 echo start backend servicess
@@ -81,7 +81,7 @@ if [ $? = 0 ]; then
   echo -e "\e[32msucess\e[0m"
 else
   echo -e "\e[31mfailed\e[0m"
-  exit
+  exit 1
 fi
 
 echo installing the mysql service
@@ -90,7 +90,7 @@ if [ $? = 0 ]; then
  echo -e "\e[32msucess\e[0m"
  else
    echo -e "\e[31mfailed\e[0m"
-   exit
+   exit 1
 fi
 
 echo load schema
@@ -99,5 +99,5 @@ if [ $? = 0 ]; then
   echo -e "\e[32msucess\e[0m"
   else
     echo -e "\e[31mfailed\e[0m"
-    exit
+    exit 1
 fi
