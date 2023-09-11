@@ -22,7 +22,10 @@ fi
 stat_check
 
 echo createing directory
-mkdir /app &>>$log_file
+id app &>>$log_file
+if [ $? -ne 0 ]; then
+ mkdir /app &>>$log_file
+fi
 stat_check
 
 
