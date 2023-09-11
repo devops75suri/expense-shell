@@ -23,7 +23,7 @@ stat_check
 
 echo createing directory
 id app &>>$log_file
-if [ $? -ne 0 ]; then
+if [ $? -ne 1 ]; then
  mkdir /app &>>$log_file
 fi
 stat_check
