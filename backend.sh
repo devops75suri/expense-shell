@@ -42,7 +42,10 @@ cd /app &>>$log_file
 stat_check
 
 echo installing the backend servicess
+id backend &>>$log_file
+if [ $? -ne 0 ]; then
 npm install &>>$log_file
+fi
 stat_check
 
 echo start backend servicess
