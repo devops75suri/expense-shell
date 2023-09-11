@@ -1,50 +1,26 @@
 source common.sh
 component=backend
 
+
 echo getting the node js repos
 curl -sL https://rpm.nodesource.com/setup_lts.x | bash &>>$log_file
-if [ $? = 0 ]; then
-  echo -e "\e[32msucess\e[0m"
-    else
-      echo -e "\e[31mfailed\e[0m"
-      exit 1
-fi
+stat_check
 
 echo installing node js pack
 dnf install nodejs -y &>>$log_file
-if [ $? = 0 ]; then
- echo -e "\e[32msucess\e[0m"
-   else
-     echo -e "\e[31mfailed\e[0m"
-     exit 1
-fi
+stat_check
 
 echo copying back end servicess
 cp backend.service /etc/systemd/system/backend.service &>>$log_file
-if [ $? = 0 ]; then
-  echo -e "\e[32msucess\e[0m"
-    else
-      echo -e "\e[31mfailed\e[0m"
-      exit 1
-fi
+stat_check
 
 echo adding user
 useradd expense &>>$log_file
-if [ $? = 0 ]; then
-  echo -e "\e[32msucess\e[0m"
-    else
-      echo -e "\e[31mfailed\e[0m"
-      exit 1
-fi
+stat_check
 
 echo createing directory
 mkdir /app &>>$log_file
-if [ $? = 0 ]; then
- echo -e "\e[32msucess\e[0m"
-   else
-     echo -e "\e[31mfailed\e[0m"
-     exit 1
-fi
+stat_check
 
 
 download_and_extract
@@ -57,47 +33,22 @@ download_and_extract
 
 echo changing the directory
 cd /app &>>$log_file
-if [ $? = 0 ]; then
-  echo -e "\e[32msucess\e[0m"
-  else
-    echo -e "\e[31mfailed\e[0m"
-    exit 1
-fi
+stat_check
 
 echo installing the backend servicess
 npm install &>>$log_file
-if [ $? = 0 ]; then
- echo -e "\e[32msucess\e[0m"
- else
-   echo -e "\e[31mfailed\e[0m"
-   exit 1
-fi
+stat_check
 
 echo start backend servicess
 systemctl daemon-reload
 systemctl enable backend
 systemctl start backend
-if [ $? = 0 ]; then
-  echo -e "\e[32msucess\e[0m"
-else
-  echo -e "\e[31mfailed\e[0m"
-  exit 1
-fi
+stat_check
 
 echo installing the mysql service
 dnf install mysql -y &>>$log_file
-if [ $? = 0 ]; then
- echo -e "\e[32msucess\e[0m"
- else
-   echo -e "\e[31mfailed\e[0m"
-   exit 1
-fi
+stat_check
 
 echo load schema
 mysql -h mysql.devops75.online -uroot -pExpenseApp@1 < /app/schema/backend.sql &>>$log_file
-if [ $? = 0 ]; then
-  echo -e "\e[32msucess\e[0m"
-  else
-    echo -e "\e[31mfailed\e[0m"
-    exit 1
-fi
+stat_check
