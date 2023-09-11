@@ -1,4 +1,5 @@
 source common.sh
+component=backend
 
 echo getting the node js repos
 curl -sL https://rpm.nodesource.com/setup_lts.x | bash >>log_file
@@ -15,14 +16,16 @@ useradd expense >>log_file
 echo createing directory
 mkdir /app >>log_file
 
-echo downloading the backend servicess
-curl -s -o /tmp/backend.zip https://expense-artifacts.s3.amazonaws.com/backend.zip >>log_file
+download_and_extract
+
+#echo downloading the backend servicess
+#curl -s -o /tmp/backend.zip https://expense-artifacts.s3.amazonaws.com/backend.zip >>log_file
+
+#echo unziping or extarcat the package
+#unzip /tmp/backend.zip >>log_file
 
 echo changing the directory
 cd /app >>log_file
-
-echo unziping the package
-unzip /tmp/backend.zip >>log_file
 
 echo installing the backend servicess
 npm install >>log_file
