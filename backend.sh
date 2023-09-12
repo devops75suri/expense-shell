@@ -56,9 +56,7 @@ stat_check
 
 echo installing the mysql
 id mysql &>>$log_file
-if [ $? -ne 0 ]; then
 dnf install mysql -y &>>$log_file
-fi
 stat_check
 
 echo load schema
