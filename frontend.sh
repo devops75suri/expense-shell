@@ -1,6 +1,7 @@
 dnf install nginx -y
 
 systemctl enable nginx
+
 systemctl start nginx
 
 cd expense.conf /etc/nginx/default.d/expense.conf
