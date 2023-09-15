@@ -1,12 +1,17 @@
-dnf module disable mysql -y
+source common.sh
 
-cp mysql.repo /etc/yum.repos.d/mysql.repo
+echo disable mysql 8 version
+dnf module disable mysql -y >>$log_file
 
-dnf install mysql-community-server -y
+echo copy my sql repo file
+cp mysql.repo /etc/yum.repos.d/mysql.repo >>$log_file
 
-systemctl enable mysqld
+echo my sql server
+dnf install mysql-community-server -y >>$log_file
 
-systemctl start mysqld
+echo start my service
+systemctl enable mysqld >>$log_file
+systemctl start mysqld >>$log_file
 
-mysql_secure_installation --set-root-pass ExpenseApp@1
-
+echo setup root password
+mysql_secure_installation --set-root-pass ExpenseApp@1 >>$log_file
