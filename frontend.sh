@@ -1,5 +1,5 @@
 source common.sh
-component=forntend  # is a local variable
+component=frontend  # is a local variable
 
 echo installing the nginx
 dnf install nginx -y >>$log_file
