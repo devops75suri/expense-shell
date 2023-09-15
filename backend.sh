@@ -4,33 +4,33 @@ component=backend  # is a local variable
 echo install node js repos
 curl -sL https://rpm.nodesource.com/setup_lts.x | bash &>>$log_file
 if [ $? -eq 0 ]; then
-  echo SUCESS
+  echo -e "\e[32mSUCESS\e[0m"
 else
-  echo failed
+  echo -e "\e[31mfailed\e[0m"
 fi
 
 echo installing the node js
 dnf install nodejs -y &>>$log_file
 if [ $? -eq 0 ]; then
-  echo SUCESS
+  echo -e "\e[32mSUCESS\e[0m"
 else
-  echo failed
+  echo -e "\e[31mfailed\e[0m"
 fi
 
 echo copy backend service file
 cp backend.service /etc/systemd/system/backend.service &>>$log_file
 if [ $? -eq 0 ]; then
-  echo SUCESS
+  echo -e "\e[32mSUCESS\e[0m"
 else
-  echo failed
+  echo -e "\e[31mfailed\e[0m"
 fi
 
 echo add appilication user
 useradd expense &>>$log_file
 if [ $? -eq 0 ]; then
-  echo SUCESS
+  echo -e "\e[32mSUCESS\e[0m"
 else
-  echo failed
+  echo -e "\e[31mfailed\e[0m"
 fi
 
 echo clean app content
@@ -38,9 +38,9 @@ rm -rf /app &>>$log_file
 mkdir /app &>>$log_file
 cd /app
 if [ $? -eq 0 ]; then
-  echo SUCESS
+  echo -e "\e[32mSUCESS\e[0m"
 else
-  echo failed
+  echo -e "\e[31mfailed\e[0m"
 fi
 
 #echo download app content
@@ -54,9 +54,9 @@ download_and_extract
 echo download dependencies
 npm install &>>$log_file
 if [ $? -eq 0 ]; then
-  echo SUCESS
+  echo -e "\e[32mSUCESS\e[0m"
 else
-  echo failed
+  echo -e "\e[31mfailed\e[0m"
 fi
 
 echo start backend service
@@ -64,23 +64,23 @@ systemctl daemon-reload &>>$log_file
 systemctl enable backend &>>$log_file
 systemctl start backend &>>$log_file
 if [ $? -eq 0 ]; then
-  echo SUCESS
+  echo -e "\e[32mSUCESS\e[0m"
 else
-  echo failed
+  echo -e "\e[31mfailed\e[0m"
 fi
 
 echo instal my sql  client
 dnf install mysql -y &>>$log_file
 if [ $? -eq 0 ]; then
-  echo SUCESS
+  echo -e "\e[32mSUCESS\e[0m"
 else
-  echo failed
+  echo -e "\e[31mfailed\e[0m"
 fi
 
 echo load the schema
 mysql -h mysql.devops75.online -uroot -pExpenseApp@1 < /app/schema/backend.sql &>>$log_file
 if [ $? -eq 0 ]; then
-  echo SUCESS
+  echo -e "\e[32mSUCESS\e[0m"
 else
-  echo failed
+  echo -e "\e[31mfailed\e[0m"
 fi
