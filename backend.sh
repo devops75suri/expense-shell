@@ -28,8 +28,12 @@ else
   exit 1
 fi
 
-echo add appilication user
-useradd expense &>>$log_file
+echo add application user
+id expense &>>$log_file
+if [ $? -ne 0 ]; then
+  useradd expense &>>$log_file
+fi
+
 if [ $? -eq 0 ]; then
   echo -e "\e[32mSUCESS\e[0m"
 else
