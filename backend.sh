@@ -7,7 +7,7 @@ if [ $? -eq 0 ]; then
   echo -e "\e[32mSUCESS\e[0m"
 else
   echo -e "\e[31mfailed\e[0m"
-  exit 1
+  exit
 fi
 
 echo installing the node js
@@ -16,7 +16,7 @@ if [ $? -eq 0 ]; then
   echo -e "\e[32mSUCESS\e[0m"
 else
   echo -e "\e[31mfailed\e[0m"
-  exit 1
+  exit
 fi
 
 echo copy backend service file
@@ -25,7 +25,7 @@ if [ $? -eq 0 ]; then
   echo -e "\e[32mSUCESS\e[0m"
 else
   echo -e "\e[31mfailed\e[0m"
-  exit 1
+  exit
 fi
 
 echo add application user
@@ -38,7 +38,7 @@ if [ $? -eq 0 ]; then
   echo -e "\e[32mSUCESS\e[0m"
 else
   echo -e "\e[31mfailed\e[0m"
-  exit 1
+  exit
 fi
 
 echo clean app content
@@ -49,7 +49,7 @@ if [ $? -eq 0 ]; then
   echo -e "\e[32mSUCESS\e[0m"
 else
   echo -e "\e[31mfailed\e[0m"
-  exit 1
+  exit
 fi
 
 #echo download app content
@@ -66,7 +66,7 @@ if [ $? -eq 0 ]; then
   echo -e "\e[32mSUCESS\e[0m"
 else
   echo -e "\e[31mfailed\e[0m"
-  exit 1
+  exit
 fi
 
 echo start backend service
@@ -78,7 +78,7 @@ if [ $? -eq 0 ]; then
 else
   echo -e "\e[31mfailed\e[0m"
   exit
-fi 1
+fi
 
 echo instal my sql  client
 dnf install mysql -y &>>$log_file
@@ -86,7 +86,7 @@ if [ $? -eq 0 ]; then
   echo -e "\e[32mSUCESS\e[0m"
 else
   echo -e "\e[31mfailed\e[0m"
-  exit 1
+  exit
 fi
 
 echo load the schema
@@ -95,5 +95,5 @@ if [ $? -eq 0 ]; then
   echo -e "\e[32mSUCESS\e[0m"
 else
   echo -e "\e[31mfailed\e[0m"
-  exit 1
+  exit
 fi

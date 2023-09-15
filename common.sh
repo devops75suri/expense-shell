@@ -8,7 +8,7 @@ if [ $? -eq 0 ]; then
   echo -e "\e[32mSUCESS\e[0m"
 else
   echo -e "\e[31mfailed\e[0m"
-  exit 1
+  exit
 fi
 
 echo extracting the $component code
@@ -17,7 +17,7 @@ if [ $? -eq 0 ]; then
   echo -e "\e[32mSUCESS\e[0m"
 else
   echo -e "\e[31mfailed\e[0m"
-  exit 1
+  exit
 fi
 
 }
