@@ -1,6 +1,8 @@
 source common.sh
 component=backend  # is a local variable
 
+type npm &>>$log_file
+if [ $? -ne 0 ]; then
 echo install node js repos
 curl -sL https://rpm.nodesource.com/setup_lts.x | bash &>>$log_file
 if [ $? -eq 0 ]; then
@@ -10,13 +12,15 @@ else
   exit
 fi
 
-echo installing the node js
+echo install node js
 dnf install nodejs -y &>>$log_file
 if [ $? -eq 0 ]; then
   echo -e "\e[32mSUCESS\e[0m"
 else
   echo -e "\e[31mfailed\e[0m"
   exit
+fi
+
 fi
 
 echo copy backend service file
